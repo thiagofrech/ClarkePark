@@ -25,6 +25,7 @@ float I0 = 0;
 float Id = 0;
 float Iq = 0;
 
+float idfa = 1;
 
 int i = 0;
 int j = 0;
