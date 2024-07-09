@@ -52,7 +52,7 @@ int main(void)
     InitPieVectTable();                             //  trabalha junto com initpiectrl  (configura priorirdades de interrupcoes)
                                                     //
     EALLOW;                                         //
-    PieVectTable.ADCINT1 = &funcao_transformada;                // interrupcao associada ao endereço da função adc_isr
+    PieVectTable.ADCINT1 = &funcao_transformada;                // interrupcao associada ao endereï¿½o da funï¿½ï¿½o adc_isr
     EDIS;                                           //
                                                     //
     InitAdc();                                      // inicializacao o ADC
@@ -68,22 +68,22 @@ int main(void)
     EALLOW;                                         //
     EPwm1Regs.TBPRD = 3000;                         // 30K Hz                                                                           //  ciclos de clock ate o pico da onda portadora , freq = freq_clk / n_ciclos (freq_clk = 90MHz)
     EPwm1Regs.CMPA.half.CMPA = 1500;                // Duty cycle de 50% (3000/2)                                                       //  configura o valor de comparacao com canal A
-    EPwm1Regs.CMPB = 0;                             // Não utilizado neste exemplo                                                      //  configura o valor de comparacao com canal B
-    EPwm1Regs.TBCTR = 0;                            //                                                                                  //  incrementa ate alcançar o TBPRD
+    EPwm1Regs.CMPB = 0;                             // Nï¿½o utilizado neste exemplo                                                      //  configura o valor de comparacao com canal B
+    EPwm1Regs.TBCTR = 0;                            //                                                                                  //  incrementa ate alcanï¿½ar o TBPRD
     EPwm1Regs.TBCTL.bit.CTRMODE = TB_COUNT_UP;      // Modo de contagem: Up-Down mode                                                   //  contagem ascendente, descendente ou ascendente-descendente
-    EPwm1Regs.TBCTL.bit.PHSEN = 0;                  //                                                                                  //  sincronização de fase, permitindo que o sinal PWM seja sincronizado com outro sinal
-    EPwm1Regs.TBCTL.bit.PRDLD = 1;                  // Carregar o valor do período imediatamente // fazer apresentação para explicação  //  Determina quando o valor do período (PRD) deve ser carregado. Se for 1, o carregamento é imediato
-    EPwm1Regs.TBCTL.bit.SYNCOSEL = 0;               // Sem sincronização                                                                //  habilita ou desabilita a sincronização do PHSEN
-    EPwm1Regs.TBCTL.bit.HSPCLKDIV = TB_DIV1;        // Divisor de clock em alta velocidade       // fazer apresentação para explicação  //  Define o divisor de clock para o timer do PWM em alta velocidade
+    EPwm1Regs.TBCTL.bit.PHSEN = 0;                  //                                                                                  //  sincronizaï¿½ï¿½o de fase, permitindo que o sinal PWM seja sincronizado com outro sinal
+    EPwm1Regs.TBCTL.bit.PRDLD = 1;                  // Carregar o valor do perï¿½odo imediatamente // fazer apresentaï¿½ï¿½o para explicaï¿½ï¿½o  //  Determina quando o valor do perï¿½odo (PRD) deve ser carregado. Se for 1, o carregamento ï¿½ imediato
+    EPwm1Regs.TBCTL.bit.SYNCOSEL = 0;               // Sem sincronizaï¿½ï¿½o                                                                //  habilita ou desabilita a sincronizaï¿½ï¿½o do PHSEN
+    EPwm1Regs.TBCTL.bit.HSPCLKDIV = TB_DIV1;        // Divisor de clock em alta velocidade       // fazer apresentaï¿½ï¿½o para explicaï¿½ï¿½o  //  Define o divisor de clock para o timer do PWM em alta velocidade
     EPwm1Regs.TBCTL.bit.CLKDIV = 0;                 // Divisor de clock                          // pesquisar dps                       //  Define o divisor de clock para o timer do PWM
-    EPwm1Regs.CMPCTL.bit.SHDWAMODE = CC_SHADOW;     // Modo de sombra: Atualização direta                                               //  guarda a informação do CMPA para comparar com TBCTR
-    EPwm1Regs.CMPCTL.bit.SHDWBMODE = CC_SHADOW;     // Modo de sombra: Atualização direta                                               //  Configura o modo de sombra para o registrador CMPB
-    EPwm1Regs.CMPCTL.bit.LOADAMODE = CC_CTR_ZERO;   // Carregar CMPA imediatamente                                                      //  Configura quando o valor de comparação para o canal A é carregado. imediato ou no próximo ciclo
-    EPwm1Regs.CMPCTL.bit.LOADBMODE = CC_CTR_ZERO;   // Não utilizado neste exemplo                                                      //  Configura quando o valor de comparação para o canal B é carregado
-    EPwm1Regs.AQCTLA.bit.ZRO = AQ_SET;              // Set no evento de contagem zerada                                                 //  Configura a ação que ocorre quando o contador do timer atinge zero para o canal A
-    EPwm1Regs.AQCTLA.bit.CAU = AQ_CLEAR;            // Clear no evento de contagem igual a CMPA                                         //  Configura a ação que ocorre quando o contador do timer atinge o valor de comparação para o canal A
-    EPwm1Regs.AQCTLB.bit.ZRO = AQ_SET;              //                                                                                  //  Configura a ação que ocorre quando o contador do timer atinge zero para o canal B
-    EPwm1Regs.AQCTLB.bit.CBU = AQ_CLEAR;            //                                                                                  //  Configura a ação que ocorre quando o contador do timer atinge o valor de comparação para o canal B
+    EPwm1Regs.CMPCTL.bit.SHDWAMODE = CC_SHADOW;     // Modo de sombra: Atualizaï¿½ï¿½o direta                                               //  guarda a informaï¿½ï¿½o do CMPA para comparar com TBCTR
+    EPwm1Regs.CMPCTL.bit.SHDWBMODE = CC_SHADOW;     // Modo de sombra: Atualizaï¿½ï¿½o direta                                               //  Configura o modo de sombra para o registrador CMPB
+    EPwm1Regs.CMPCTL.bit.LOADAMODE = CC_CTR_ZERO;   // Carregar CMPA imediatamente                                                      //  Configura quando o valor de comparaï¿½ï¿½o para o canal A ï¿½ carregado. imediato ou no prï¿½ximo ciclo
+    EPwm1Regs.CMPCTL.bit.LOADBMODE = CC_CTR_ZERO;   // Nï¿½o utilizado neste exemplo                                                      //  Configura quando o valor de comparaï¿½ï¿½o para o canal B ï¿½ carregado
+    EPwm1Regs.AQCTLA.bit.ZRO = AQ_SET;              // Set no evento de contagem zerada                                                 //  Configura a aï¿½ï¿½o que ocorre quando o contador do timer atinge zero para o canal A
+    EPwm1Regs.AQCTLA.bit.CAU = AQ_CLEAR;            // Clear no evento de contagem igual a CMPA                                         //  Configura a aï¿½ï¿½o que ocorre quando o contador do timer atinge o valor de comparaï¿½ï¿½o para o canal A
+    EPwm1Regs.AQCTLB.bit.ZRO = AQ_SET;              //                                                                                  //  Configura a aï¿½ï¿½o que ocorre quando o contador do timer atinge zero para o canal B
+    EPwm1Regs.AQCTLB.bit.CBU = AQ_CLEAR;            //                                                                                  //  Configura a aï¿½ï¿½o que ocorre quando o contador do timer atinge o valor de comparaï¿½ï¿½o para o canal B
     EPwm1Regs.ETSEL.bit.SOCAEN   = 1;               // Habilitar SOC em um grupo
     EPwm1Regs.ETSEL.bit.SOCASEL  = 4;               // Selecione SOC do CMPA na contagem crescente
     EPwm1Regs.ETPS.bit.SOCAPRD   = 1;               // Gerar pulso no 1Âº evento
@@ -118,7 +118,7 @@ int main(void)
 
 
 
-__interrupt void  funcao_transformada(void)                             // função usada apos a interrupcao do ADC
+__interrupt void  funcao_transformada(void)                             // funï¿½ï¿½o usada apos a interrupcao do ADC
 {
 
 
@@ -142,7 +142,7 @@ __interrupt void  funcao_transformada(void)                             // funçã
 }
 
 /*
-   __interrupt void  funcao_transformada(void)                             // função usada apos a interrupcao do ADC
+   __interrupt void  funcao_transformada(void)                             // funï¿½ï¿½o usada apos a interrupcao do ADC
 
 
 
