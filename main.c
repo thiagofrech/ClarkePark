@@ -27,6 +27,9 @@ float Iq = 0;
 
 float idfa = 1;
 
+//Alteração
+
+
 int i = 0;
 int j = 0;
 int aux = 0;
